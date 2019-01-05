@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.pojo.Comment">
+    <id column="com_id" jdbcType="BIGINT" property="comId" />
+    <result column="com_score" jdbcType="INTEGER" property="comScore" />
+    <result column="com_gid" jdbcType="BIGINT" property="comGid" />
+    <result column="com_uid" jdbcType="BIGINT" property="comUid" />
+    <result column="com_content" jdbcType="VARCHAR" property="comContent" />
+    <result column="com_time" jdbcType="DATE" property="comTime" />
+    <result column="com_flag" jdbcType="INTEGER" property="comFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    com_id, com_score, com_gid, com_uid, com_content, com_time, com_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_comment
+    where com_id = #{comId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_comment
+    where com_id = #{comId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.qfedu.pojo.Comment">
+    insert into t_comment (com_id, com_score, com_gid, 
+      com_uid, com_content, com_time, 
+      com_flag)
+    values (#{comId,jdbcType=BIGINT}, #{comScore,jdbcType=INTEGER}, #{comGid,jdbcType=BIGINT}, 
+      #{comUid,jdbcType=BIGINT}, #{comContent,jdbcType=VARCHAR}, #{comTime,jdbcType=DATE}, 
+      #{comFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qfedu.pojo.Comment">
+    insert into t_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="comId != null">
+        com_id,
+      </if>
+      <if test="comScore != null">
+        com_score,
+      </if>
+      <if test="comGid != null">
+        com_gid,
+      </if>
+      <if test="comUid != null">
+        com_uid,
+      </if>
+      <if test="comContent != null">
+        com_content,
+      </if>
+      <if test="comTime != null">
+        com_time,
+      </if>
+      <if test="comFlag != null">
+        com_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="comId != null">
+        #{comId,jdbcType=BIGINT},
+      </if>
+      <if test="comScore != null">
+        #{comScore,jdbcType=INTEGER},
+      </if>
+      <if test="comGid != null">
+        #{comGid,jdbcType=BIGINT},
+      </if>
+      <if test="comUid != null">
+        #{comUid,jdbcType=BIGINT},
+      </if>
+      <if test="comContent != null">
+        #{comContent,jdbcType=VARCHAR},
+      </if>
+      <if test="comTime != null">
+        #{comTime,jdbcType=DATE},
+      </if>
+      <if test="comFlag != null">
+        #{comFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qfedu.pojo.Comment">
+    update t_comment
+    <set>
+      <if test="comScore != null">
+        com_score = #{comScore,jdbcType=INTEGER},
+      </if>
+      <if test="comGid != null">
+        com_gid = #{comGid,jdbcType=BIGINT},
+      </if>
+      <if test="comUid != null">
+        com_uid = #{comUid,jdbcType=BIGINT},
+      </if>
+      <if test="comContent != null">
+        com_content = #{comContent,jdbcType=VARCHAR},
+      </if>
+      <if test="comTime != null">
+        com_time = #{comTime,jdbcType=DATE},
+      </if>
+      <if test="comFlag != null">
+        com_flag = #{comFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where com_id = #{comId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.Comment">
+    update t_comment
+    set com_score = #{comScore,jdbcType=INTEGER},
+      com_gid = #{comGid,jdbcType=BIGINT},
+      com_uid = #{comUid,jdbcType=BIGINT},
+      com_content = #{comContent,jdbcType=VARCHAR},
+      com_time = #{comTime,jdbcType=DATE},
+      com_flag = #{comFlag,jdbcType=INTEGER}
+    where com_id = #{comId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.pojo.Order">
+    <id column="od_id" jdbcType="BIGINT" property="odId" />
+    <result column="od_state" jdbcType="INTEGER" property="odState" />
+    <result column="od_flag" jdbcType="INTEGER" property="odFlag" />
+    <result column="od_price" jdbcType="DOUBLE" property="odPrice" />
+    <result column="od_uid" jdbcType="BIGINT" property="odUid" />
+    <result column="od_gid" jdbcType="BIGINT" property="odGid" />
+    <result column="od_cid" jdbcType="BIGINT" property="odCid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    od_id, od_state, od_flag, od_price, od_uid, od_gid, od_cid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    where od_id = #{odId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_order
+    where od_id = #{odId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.qfedu.pojo.Order">
+    insert into t_order (od_id, od_state, od_flag, 
+      od_price, od_uid, od_gid, 
+      od_cid)
+    values (#{odId,jdbcType=BIGINT}, #{odState,jdbcType=INTEGER}, #{odFlag,jdbcType=INTEGER}, 
+      #{odPrice,jdbcType=DOUBLE}, #{odUid,jdbcType=BIGINT}, #{odGid,jdbcType=BIGINT}, 
+      #{odCid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qfedu.pojo.Order">
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="odId != null">
+        od_id,
+      </if>
+      <if test="odState != null">
+        od_state,
+      </if>
+      <if test="odFlag != null">
+        od_flag,
+      </if>
+      <if test="odPrice != null">
+        od_price,
+      </if>
+      <if test="odUid != null">
+        od_uid,
+      </if>
+      <if test="odGid != null">
+        od_gid,
+      </if>
+      <if test="odCid != null">
+        od_cid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="odId != null">
+        #{odId,jdbcType=BIGINT},
+      </if>
+      <if test="odState != null">
+        #{odState,jdbcType=INTEGER},
+      </if>
+      <if test="odFlag != null">
+        #{odFlag,jdbcType=INTEGER},
+      </if>
+      <if test="odPrice != null">
+        #{odPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="odUid != null">
+        #{odUid,jdbcType=BIGINT},
+      </if>
+      <if test="odGid != null">
+        #{odGid,jdbcType=BIGINT},
+      </if>
+      <if test="odCid != null">
+        #{odCid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qfedu.pojo.Order">
+    update t_order
+    <set>
+      <if test="odState != null">
+        od_state = #{odState,jdbcType=INTEGER},
+      </if>
+      <if test="odFlag != null">
+        od_flag = #{odFlag,jdbcType=INTEGER},
+      </if>
+      <if test="odPrice != null">
+        od_price = #{odPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="odUid != null">
+        od_uid = #{odUid,jdbcType=BIGINT},
+      </if>
+      <if test="odGid != null">
+        od_gid = #{odGid,jdbcType=BIGINT},
+      </if>
+      <if test="odCid != null">
+        od_cid = #{odCid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where od_id = #{odId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.Order">
+    update t_order
+    set od_state = #{odState,jdbcType=INTEGER},
+      od_flag = #{odFlag,jdbcType=INTEGER},
+      od_price = #{odPrice,jdbcType=DOUBLE},
+      od_uid = #{odUid,jdbcType=BIGINT},
+      od_gid = #{odGid,jdbcType=BIGINT},
+      od_cid = #{odCid,jdbcType=BIGINT}
+    where od_id = #{odId,jdbcType=BIGINT}
+  </update>
+</mapper>

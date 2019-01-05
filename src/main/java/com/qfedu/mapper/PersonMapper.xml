@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.PersonMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.pojo.Person">
+    <id column="per_id" jdbcType="BIGINT" property="perId" />
+    <result column="per_uid" jdbcType="BIGINT" property="perUid" />
+    <result column="per_sex" jdbcType="INTEGER" property="perSex" />
+    <result column="per_name" jdbcType="VARCHAR" property="perName" />
+    <result column="per_addr" jdbcType="VARCHAR" property="perAddr" />
+    <result column="per_flag" jdbcType="INTEGER" property="perFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    per_id, per_uid, per_sex, per_name, per_addr, per_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_person
+    where per_id = #{perId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_person
+    where per_id = #{perId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.qfedu.pojo.Person">
+    insert into t_person (per_id, per_uid, per_sex, 
+      per_name, per_addr, per_flag
+      )
+    values (#{perId,jdbcType=BIGINT}, #{perUid,jdbcType=BIGINT}, #{perSex,jdbcType=INTEGER}, 
+      #{perName,jdbcType=VARCHAR}, #{perAddr,jdbcType=VARCHAR}, #{perFlag,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qfedu.pojo.Person">
+    insert into t_person
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="perId != null">
+        per_id,
+      </if>
+      <if test="perUid != null">
+        per_uid,
+      </if>
+      <if test="perSex != null">
+        per_sex,
+      </if>
+      <if test="perName != null">
+        per_name,
+      </if>
+      <if test="perAddr != null">
+        per_addr,
+      </if>
+      <if test="perFlag != null">
+        per_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="perId != null">
+        #{perId,jdbcType=BIGINT},
+      </if>
+      <if test="perUid != null">
+        #{perUid,jdbcType=BIGINT},
+      </if>
+      <if test="perSex != null">
+        #{perSex,jdbcType=INTEGER},
+      </if>
+      <if test="perName != null">
+        #{perName,jdbcType=VARCHAR},
+      </if>
+      <if test="perAddr != null">
+        #{perAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="perFlag != null">
+        #{perFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qfedu.pojo.Person">
+    update t_person
+    <set>
+      <if test="perUid != null">
+        per_uid = #{perUid,jdbcType=BIGINT},
+      </if>
+      <if test="perSex != null">
+        per_sex = #{perSex,jdbcType=INTEGER},
+      </if>
+      <if test="perName != null">
+        per_name = #{perName,jdbcType=VARCHAR},
+      </if>
+      <if test="perAddr != null">
+        per_addr = #{perAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="perFlag != null">
+        per_flag = #{perFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where per_id = #{perId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.Person">
+    update t_person
+    set per_uid = #{perUid,jdbcType=BIGINT},
+      per_sex = #{perSex,jdbcType=INTEGER},
+      per_name = #{perName,jdbcType=VARCHAR},
+      per_addr = #{perAddr,jdbcType=VARCHAR},
+      per_flag = #{perFlag,jdbcType=INTEGER}
+    where per_id = #{perId,jdbcType=BIGINT}
+  </update>
+</mapper>

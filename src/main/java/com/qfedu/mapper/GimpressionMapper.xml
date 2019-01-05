@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.GimpressionMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.pojo.Gimpression">
+    <id column="pre_id" jdbcType="INTEGER" property="preId" />
+    <result column="pre_gid" jdbcType="BIGINT" property="preGid" />
+    <result column="pre_impression" jdbcType="VARCHAR" property="preImpression" />
+    <result column="pre_flag" jdbcType="INTEGER" property="preFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pre_id, pre_gid, pre_impression, pre_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_gimpression
+    where pre_id = #{preId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_gimpression
+    where pre_id = #{preId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qfedu.pojo.Gimpression">
+    insert into t_gimpression (pre_id, pre_gid, pre_impression, 
+      pre_flag)
+    values (#{preId,jdbcType=INTEGER}, #{preGid,jdbcType=BIGINT}, #{preImpression,jdbcType=VARCHAR}, 
+      #{preFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qfedu.pojo.Gimpression">
+    insert into t_gimpression
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="preId != null">
+        pre_id,
+      </if>
+      <if test="preGid != null">
+        pre_gid,
+      </if>
+      <if test="preImpression != null">
+        pre_impression,
+      </if>
+      <if test="preFlag != null">
+        pre_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="preId != null">
+        #{preId,jdbcType=INTEGER},
+      </if>
+      <if test="preGid != null">
+        #{preGid,jdbcType=BIGINT},
+      </if>
+      <if test="preImpression != null">
+        #{preImpression,jdbcType=VARCHAR},
+      </if>
+      <if test="preFlag != null">
+        #{preFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qfedu.pojo.Gimpression">
+    update t_gimpression
+    <set>
+      <if test="preGid != null">
+        pre_gid = #{preGid,jdbcType=BIGINT},
+      </if>
+      <if test="preImpression != null">
+        pre_impression = #{preImpression,jdbcType=VARCHAR},
+      </if>
+      <if test="preFlag != null">
+        pre_flag = #{preFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where pre_id = #{preId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.Gimpression">
+    update t_gimpression
+    set pre_gid = #{preGid,jdbcType=BIGINT},
+      pre_impression = #{preImpression,jdbcType=VARCHAR},
+      pre_flag = #{preFlag,jdbcType=INTEGER}
+    where pre_id = #{preId,jdbcType=INTEGER}
+  </update>
+</mapper>
