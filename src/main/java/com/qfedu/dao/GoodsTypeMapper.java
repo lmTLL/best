@@ -2,6 +2,8 @@ package com.qfedu.dao;
 
 import com.qfedu.pojo.GoodsType;
 
+import java.util.List;
+
 public interface GoodsTypeMapper {
     int deleteByPrimaryKey(Integer gtId);
 
@@ -14,4 +16,6 @@ public interface GoodsTypeMapper {
     int updateByPrimaryKeySelective(GoodsType record);
 
     int updateByPrimaryKey(GoodsType record);
+
+    List<GoodsType> selectAllGoodsType();
 }

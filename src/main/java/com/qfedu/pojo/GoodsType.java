@@ -1,5 +1,7 @@
 package com.qfedu.pojo;
 
+import java.util.List;
+
 public class GoodsType {
     private Integer gtId;
 
@@ -8,6 +10,18 @@ public class GoodsType {
     private String gtImg;
 
     private Integer gtFlag;
+
+    private Integer gtKind;
+
+    private List<GoodsType> TwoGoodsType;
+
+    public void setTwoGoodsType(List<GoodsType> twoGoodsType) {
+        TwoGoodsType = twoGoodsType;
+    }
+
+    public List<GoodsType> getTwoGoodsType() {
+        return TwoGoodsType;
+    }
 
     public Integer getGtId() {
         return gtId;
@@ -39,5 +53,13 @@ public class GoodsType {
 
     public void setGtFlag(Integer gtFlag) {
         this.gtFlag = gtFlag;
+    }
+
+    public Integer getGtKind() {
+        return gtKind;
+    }
+
+    public void setGtKind(Integer gtKind) {
+        this.gtKind = gtKind;
     }
 }
