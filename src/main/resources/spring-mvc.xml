@@ -15,7 +15,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!-- 本例中，用来扫描@Controller注解 -->
-	<context:component-scan base-package="com.qianfeng.controller">
+	<context:component-scan base-package="com.qfedu.controller">
 	</context:component-scan>
 
 	<!-- 配置转换服务 -->
@@ -46,7 +46,7 @@
      <bean id="convertorService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
      	<property name="converters">
      		<list>
-     			<bean class="com.qianfeng.controller.CustomerDateConvert"></bean>
+     			<bean class="com.qfedu.controller.CustomerDateConvert"></bean>
      			
      		</list>
      	</property>

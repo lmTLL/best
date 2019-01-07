@@ -13,7 +13,7 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 	<!-- 1.数据源 -->  
-	<bean id="adminRealm" class="com.qianfeng.shiro.AdminRealm"></bean>
+	<bean id="adminRealm" class="com.qfedu.shiro.AdminRealm"></bean>
 	<!-- 2.管理器 -->
 	 <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="adminRealm"></property>
@@ -22,7 +22,7 @@
 	<bean id="shiroFilter"  class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager"></property>
 		<!-- 登入页面 -->
-		<property name="loginUrl" value="/html/index.html"></property>
+		<property name="loginUrl" value="/index.html"></property>
 		<!-- 登入成功页面 -->
 		<property name="successUrl" value="/html/admin/admin.html"></property>
 		<!-- 错误页面 -->
