@@ -31,6 +31,7 @@ public class GoodsTypeServiceImpl implements GoodsTypeService {
                     //确认是否为同一级菜单
                     if (goodsType.getGtKind() == goods.getGtId()){
                         goods.getTwoGoodsType().add(goodsType);
+                        break;
                     }
                 }
             }
