@@ -75,5 +75,10 @@
 		<!-- <url-pattern>*.do</url-pattern> -->
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DispatchServlet</servlet-name>
+		<url-pattern>/v2/api-docs</url-pattern>
+	</servlet-mapping>
+
 
 </web-app>
