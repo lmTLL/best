@@ -2,6 +2,8 @@ package com.qfedu.dao;
 
 import com.qfedu.pojo.Gimg;
 
+import java.util.List;
+
 public interface GimgMapper {
     int deleteByPrimaryKey(Long imgId);
 
@@ -14,4 +16,6 @@ public interface GimgMapper {
     int updateByPrimaryKeySelective(Gimg record);
 
     int updateByPrimaryKey(Gimg record);
+
+    List<Gimg> selectAllGimgByGoodsId(Long goodsId);
 }
