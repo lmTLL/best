@@ -114,4 +114,7 @@
       com_flag = #{comFlag,jdbcType=INTEGER}
     where com_id = #{comId,jdbcType=BIGINT}
   </update>
+  <select id="selectByGoodsId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from  t_comment where com_gid = #{comGid,jdbcType=BIGINT}
+  </select>
 </mapper>
