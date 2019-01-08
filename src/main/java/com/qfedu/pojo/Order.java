@@ -1,5 +1,7 @@
 package com.qfedu.pojo;
 
+import java.util.List;
+
 public class Order {
     private Long odId;
 
@@ -14,6 +16,17 @@ public class Order {
     private Long odGid;
 
     private Long odCid;
+
+    private List<OrderGoods> orderGoods;
+
+    public void setOrderGoods(List<OrderGoods> orderGoods) {
+        this.orderGoods = orderGoods;
+    }
+
+    public List<OrderGoods> getOrderGoods() {
+        return orderGoods;
+    }
+
 
     public Long getOdId() {
         return odId;

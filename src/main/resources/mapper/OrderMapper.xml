@@ -19,6 +19,18 @@
     from t_order
     where od_id = #{odId,jdbcType=BIGINT}
   </select>
+  <select id="selectAllOrderByUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_order
+    where od_uid = #{userId,jdbcType=BIGINT}
+  </select>
+    <select id="selectAllGoodsByUserIdAndGoodsType" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_order
+    where od_uid = #{userId,jdbcType=BIGINT} and od_state=#{state,jdbcType=BIGINT}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_order
     where od_id = #{odId,jdbcType=BIGINT}

@@ -18,6 +18,12 @@
     from t_order_goods
     where og_id = #{ogId,jdbcType=INTEGER}
   </select>
+  <select id="selectAllOrderGoodsByOrderId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_order_goods
+    where og_oid = #{OrderId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_order_goods
     where og_id = #{ogId,jdbcType=INTEGER}
