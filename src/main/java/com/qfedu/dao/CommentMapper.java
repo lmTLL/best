@@ -2,6 +2,8 @@ package com.qfedu.dao;
 
 import com.qfedu.pojo.Comment;
 
+import java.util.List;
+
 public interface CommentMapper {
     int deleteByPrimaryKey(Long comId);
 
@@ -14,4 +16,6 @@ public interface CommentMapper {
     int updateByPrimaryKeySelective(Comment record);
 
     int updateByPrimaryKey(Comment record);
+
+    List<Comment> selectByGoodsId(Integer comGid);
 }

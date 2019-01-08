@@ -1,5 +1,7 @@
 package com.qfedu.pojo;
 
+import java.util.List;
+
 public class Goods {
     private Long goodsId;
 
@@ -22,6 +24,27 @@ public class Goods {
     private String goodsModel;
 
     private Long goodsSales;
+
+    private List<Imp> impList;
+
+    private List<Gimg> gimgList;
+
+
+    public List<Imp> getImpList() {
+        return impList;
+    }
+
+    public void setImpList(List<Imp> impList) {
+        this.impList = impList;
+    }
+
+    public List<Gimg> getGimgList() {
+        return gimgList;
+    }
+
+    public void setGimgList(List<Gimg> gimgList) {
+        this.gimgList = gimgList;
+    }
 
     public Long getGoodsId() {
         return goodsId;
