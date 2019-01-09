@@ -90,4 +90,18 @@
       air_gid = #{airGid,jdbcType=INTEGER}
     where air_id = #{airId,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from t_air
+  </select>
+  <update id="updateTem" parameterType="java.lang.Integer">
+    update t_air set air_tem = #{airTem,jdbcType=INTEGER} where air_id = 1
+  </update>
+
+  <update id="updateWsp" parameterType="java.lang.Integer">
+    update t_air set air_wsp = #{airWsp,jdbcType=INTEGER} where air_id = 1
+  </update>
+
+  <update id="updateWdir" parameterType="java.lang.Integer">
+    update t_air set air_wdir = #{airWdir,jdbcType=INTEGER} where air_id = 1
+  </update>
 </mapper>

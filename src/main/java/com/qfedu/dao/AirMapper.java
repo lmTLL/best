@@ -14,4 +14,12 @@ public interface AirMapper {
     int updateByPrimaryKeySelective(Air record);
 
     int updateByPrimaryKey(Air record);
+
+    Air selectAll();
+
+    int updateTem(Integer airTem);
+
+    int updateWsp(Integer airWsp);
+
+    int updateWdir(Integer airWdir);
 }
