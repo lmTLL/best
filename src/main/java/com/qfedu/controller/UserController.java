@@ -35,16 +35,10 @@ public class UserController {
     @ResponseBody
     @CrossOrigin
     public ResultVo addUser(@ApiParam("用户名，String类型") String name,@ApiParam("密码，String类型") String password) throws UnsupportedEncodingException {
-        ResultVo ro=new ResultVo();
-        User user=new User();
-        byte [] msg=password.getBytes();
-        String password1= Base64Util.base64Enc(msg);
-        user.setUserName(name);
-        user.setUserPassword(password1);
-        int i=userService.addUser(user);
-        ro.setCode(i);
-        ro.setData(null);
-        return ro;
+       User user = new User();
+       user.setUserName(name);
+       user.setUserPassword(password);
+        return ResultVo.setOK(userService.addUser(user));
 
     }
 
@@ -53,19 +47,22 @@ public class UserController {
     @ResponseBody
     @CrossOrigin
     public ResultVo login(@ApiParam("用户名，String类型")String name,@ApiParam("密码，String类型")String password) {
-        ResultVo ro= userService.findUser(name,password);
-        if(ro.getCode()==0) {
+        User user = userService.findUser(name,password);
+        System.out.println(user);
+        if(user != null) {
             //Shiro完成登录认证
             //1、获取主题
             Subject subject= SecurityUtils.getSubject();
             //2、设置登录的Token
             UsernamePasswordToken token=new UsernamePasswordToken(name, password);
             //3、存储数据到Session
-            subject.getSession().setAttribute(name, ro.getData());
+            subject.getSession().setAttribute(user.getUserName() , user);
             //4、登录认证
             subject.login(token);
+            return  ResultVo.setOK(user.getUserId());
+        } else {
+            return ResultVo.setERROR();
         }
-        return ro;
     }
 
     @ApiOperation(value="得到用户")

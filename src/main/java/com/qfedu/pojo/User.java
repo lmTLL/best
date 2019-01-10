@@ -60,4 +60,16 @@ public class User {
     public void setUserHeadimg(String userHeadimg) {
         this.userHeadimg = userHeadimg == null ? null : userHeadimg.trim();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userFlag=" + userFlag +
+                ", userPhone='" + userPhone + '\'' +
+                ", userHeadimg='" + userHeadimg + '\'' +
+                '}';
+    }
 }

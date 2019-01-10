@@ -27,7 +27,7 @@ public class EncryptUtil {
 	public static final String PUBKEY = "publicKey";
 	public static final String PRIKEY = "privateKey";
 	// Hash算法
-	// MD5 返回值是16进制
+	// MD5 返回值是32进制
 	public static String md5Enc(String msg) {
 		try {
 			MessageDigest digest = MessageDigest.getInstance("MD5");

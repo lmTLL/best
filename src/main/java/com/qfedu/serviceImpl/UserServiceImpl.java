@@ -20,18 +20,20 @@ public class UserServiceImpl implements UserService {
     public int addUser(User user) {
 
        // return userDao.adduser(user);
+        user.setUserPassword(EncryptUtil.md5Enc(user.getUserPassword()));
+
         return userDao.insertSelective(user);
     }
 
 
     @Override
-    public ResultVo findUser(String name,String password) {
+    public User findUser(String name,String password) {
         User user=userDao.userlogin(name);
         if(user!=null) {
-            if (Objects.equals(user.getUserPassword(), Base64Util.base64Dec(password))) {
-                return ResultVo.setOK(user);
+            if (Objects.equals(user.getUserPassword(), EncryptUtil.md5Enc(password))) {
+                return user;
             }
         }
-        return ResultVo.setERROR();
+        return null;
     }
 }
