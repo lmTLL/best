@@ -3,6 +3,7 @@ package com.qfedu.serviceImpl;
 import com.qfedu.dao.UserMapper;
 import com.qfedu.pojo.User;
 import com.qfedu.service.UserService;
+import com.qfedu.util.Base64Util;
 import com.qfedu.util.EncryptUtil;
 import com.qfedu.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResultVo findUser(String name,String password) {
         User user=userDao.userlogin(name);
-        if(user!=null){
-            if(Objects.equals(user.getUserPassword(), EncryptUtil.md5Enc(password))){
+        if(user!=null) {
+            if (Objects.equals(user.getUserPassword(), Base64Util.base64Dec(password))) {
                 return ResultVo.setOK(user);
             }
         }
