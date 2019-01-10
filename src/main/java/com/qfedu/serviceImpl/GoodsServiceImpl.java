@@ -7,6 +7,7 @@ import com.qfedu.pojo.Gimg;
 import com.qfedu.pojo.Goods;
 import com.qfedu.pojo.Imp;
 import com.qfedu.service.GoodsService;
+import com.qfedu.vo.ResultVo;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,5 +51,16 @@ public class GoodsServiceImpl implements GoodsService {
     public List<Goods> selectAllGoods() {
         List<Goods> list = goodsDao.selectAllGoods();
         return list;
+    }
+
+    @Override
+    public ResultVo selectByGoodsName(String goodsName) {
+        Goods goods = goodsDao.selectByGoodsName(goodsName);
+        if (goods!=null){
+            return ResultVo.setOK(goods);
+        }else{
+            return ResultVo.setERROR("没有匹配的商品，再找找看吧");
+        }
+
     }
 }

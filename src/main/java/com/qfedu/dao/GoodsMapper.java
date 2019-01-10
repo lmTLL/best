@@ -20,4 +20,8 @@ public interface GoodsMapper {
     List<Goods> selectHotGoodsByTypeId(Integer TypeId);
 
     List<Goods> selectAllGoods();
+
+    Goods selectByGoodsName(String goodsName);
+
+
 }

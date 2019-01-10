@@ -44,4 +44,13 @@ public class GoodsController {
     }
 
 
+    @ApiOperation(value = "根据商品名查找商品")
+    @RequestMapping("/selectByGoodsName.do")
+    @ResponseBody
+    @CrossOrigin
+    public ResultVo selectByGoodsName(String goodsName){
+        return  service.selectByGoodsName(goodsName);
+    }
+
+
 }
