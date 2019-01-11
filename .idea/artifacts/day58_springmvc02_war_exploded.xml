@@ -1,17 +1,17 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="Airdb:war exploded">
+  <artifact type="exploded-war" name="day58_springmvc02:war exploded">
     <output-path>$PROJECT_DIR$/target/webmaven</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
-        <module>Airdb</module>
+        <module>day58_springmvc02</module>
         <packaging>war</packaging>
       </options>
     </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="Airdb" />
+          <element id="module-output" name="day58_springmvc02" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-spring:1.4.0" />
@@ -71,7 +71,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/webmaven/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="Airdb/web/Web" />
+      <element id="javaee-facet-resources" facet="day58_springmvc02/web/Web" />
     </root>
   </artifact>
 </component>

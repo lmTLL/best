@@ -90,19 +90,22 @@
       car_flag = #{carFlag,jdbcType=INTEGER}
     where car_id = #{carId,jdbcType=BIGINT}
   </update>
-  <select id="getAllCar" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="getAllCar" parameterType="Long" resultMap="BaseResultMap">
     select * from t_car where car_uid = #{carUid,jdbcType=BIGINT}
   </select>
 
-  <update id="updateAllCar" parameterType="java.lang.Integer">
+  <update id="updateAllCar" parameterType="Long">
     update t_car set car_flag = 0 where car_uid = #{carUid,jdbcType=BIGINT}
   </update>
 
-  <update id="updateOneCar" parameterType="java.lang.Integer">
+  <update id="updateOneCar" parameterType="Long">
     update t_car set car_flag = 0 where car_id = #{carId,jdbcType=BIGINT}
   </update>
 
-  <update id="updateCarcount" parameterType="java.lang.Integer">
+  <update id="updateCarcount">
     update t_car set car_gcount = #{carGcount,jdbcType=BIGINT} where car_id = #{carId,jdbcType=BIGINT}
   </update>
+    <select id="selectMaxId" resultType="Long">
+       select max(car_id) from t_car
+    </select>
 </mapper>

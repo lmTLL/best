@@ -1,20 +1,20 @@
 package com.qfedu.controller;
 
+import com.google.common.base.Objects;
 import com.qfedu.pojo.User;
 import com.qfedu.service.UserService;
 import com.qfedu.util.Base64Util;
+import com.qfedu.util.Message;
 import com.qfedu.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.ibatis.annotations.Param;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.apache.shiro.subject.Subject;
 
 import javax.servlet.http.HttpSession;
@@ -25,14 +25,15 @@ import java.util.Enumeration;
 import java.util.List;
 
 @Api(produces="登陆注册接口",value="接口文档")
-@Controller
+@RestController
 public class UserController {
     @Autowired
     private UserService userService;
 
+    private String code = "";
+
     @ApiOperation(value="用户注册")
     @RequestMapping("/addUser.do")
-    @ResponseBody
     @CrossOrigin
     public ResultVo addUser(@ApiParam("用户名，String类型") String name,@ApiParam("密码，String类型") String password) throws UnsupportedEncodingException {
        User user = new User();
@@ -44,7 +45,6 @@ public class UserController {
 
     @ApiOperation(value="用户登录")
     @RequestMapping("/userlogin.do")
-    @ResponseBody
     @CrossOrigin
     public ResultVo login(@ApiParam("用户名，String类型")String name,@ApiParam("密码，String类型")String password) {
         User user = userService.findUser(name,password);
@@ -67,7 +67,6 @@ public class UserController {
 
     @ApiOperation(value="得到用户")
     @GetMapping("getUserId.do")
-    @ResponseBody
     @CrossOrigin
     public ResultVo getUserId() {
         Subject subject = SecurityUtils.getSubject();
@@ -80,6 +79,25 @@ public class UserController {
                 user.setUserName(user2.getUserName());
                 return ResultVo.setOK(user);
             }
+        }
+        return ResultVo.setERROR();
+    }
+
+    @ApiOperation(value="获取短信验证码")
+    @GetMapping("GetMessage.do")
+    @CrossOrigin
+    public ResultVo GetMessage(@Param("手机号") String phone) throws Exception {
+        code = Message.getCode();
+        boolean type = Message.sendCode(phone, code);
+        return ResultVo.setOK(type);
+    }
+
+    @ApiOperation(value="验证验证码是否正确")
+    @GetMapping("GetMessageIsItRight.do")
+    @CrossOrigin
+    public ResultVo GetMessageIsItRight(@Param("传来的验证码") String message) {
+        if (Objects.equal(message,code)){
+            return ResultVo.setOK(1);
         }
         return ResultVo.setERROR();
     }

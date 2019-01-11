@@ -4,9 +4,15 @@ import com.qfedu.pojo.Car;
 import com.qfedu.vo.ResultVo;
 
 public interface CarService {
-    ResultVo getAllCar(Integer carUid);
+    ResultVo getAllCar(Long carUid);
 
-    ResultVo insertSelective(Car record);
+    ResultVo addCar(Long carUid,Long carGcount, Long carGid);
 
-    ResultVo updateAllCar(Integer carUid);
+    ResultVo updateAllCar(Long carUid);
+
+    ResultVo updateOneCar(Long carId);
+
+    ResultVo updateCarcount(Long carGcount,Long carId);
+
+    ResultVo selectMaxId();
 }

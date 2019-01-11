@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Airdb.iml" filepath="$PROJECT_DIR$/.idea/Airdb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day58_springmvc02.iml" filepath="$PROJECT_DIR$/day58_springmvc02.iml" />
     </modules>
   </component>
 </project>
