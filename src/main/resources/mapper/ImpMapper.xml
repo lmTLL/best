@@ -85,4 +85,7 @@
       i_flag = #{iFlag,jdbcType=INTEGER}
     where i_id = #{iId,jdbcType=INTEGER}
   </update>
+  <select id="selectAllImp" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from t_imp where i_gid = #{iGid,jdbcType=INTEGER}
+  </select>
 </mapper>

@@ -27,7 +27,7 @@ public interface CarMapper {
     int updateOneCar(Long carId);
 
     //修改商品数量
-    int updateCarcount(@Param("carGcount") Long carGcount,@Param("carId") Long carId);
+    int updateCarcount(@Param("carGcount") Long carGcount,@Param("carGid") Long carGid);
 
     //得到最大的carId
     Long selectMaxId();

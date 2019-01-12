@@ -12,7 +12,7 @@ public interface CarService {
 
     ResultVo updateOneCar(Long carId);
 
-    ResultVo updateCarcount(Long carGcount,Long carId);
+    ResultVo updateCarcount(Long carGcount,Long carGid);
 
     ResultVo selectMaxId();
 }

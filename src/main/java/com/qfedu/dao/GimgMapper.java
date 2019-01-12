@@ -18,4 +18,8 @@ public interface GimgMapper {
     int updateByPrimaryKey(Gimg record);
 
     List<Gimg> selectAllGimgByGoodsId(Long goodsId);
+
+
+
+    List<Gimg> getAllGimg(Long imgGid);
 }

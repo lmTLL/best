@@ -18,4 +18,6 @@ public interface ImpMapper {
     int updateByPrimaryKey(Imp record);
 
     List<Imp> selectAllImpByGoodsId(Long goodsId);
+
+    List<Imp> selectAllImp(Integer iGid);
 }

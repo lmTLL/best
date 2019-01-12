@@ -67,8 +67,8 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public ResultVo updateCarcount(Long carGcount, Long carId) {
-        if (dao.updateCarcount(carGcount,carId)>0){
+    public ResultVo updateCarcount(Long carGcount, Long carGid) {
+        if (dao.updateCarcount(carGcount,carGid)>0){
             return ResultVo.setOK(null);
         }else{
             return ResultVo.setERROR("数量修改失败");

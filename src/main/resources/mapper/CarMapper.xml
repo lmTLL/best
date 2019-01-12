@@ -103,7 +103,7 @@
   </update>
 
   <update id="updateCarcount">
-    update t_car set car_gcount = #{carGcount,jdbcType=BIGINT} where car_id = #{carId,jdbcType=BIGINT}
+    update t_car set car_gcount = #{carGcount,jdbcType=BIGINT} where car_gid = #{carGid,jdbcType=BIGINT}
   </update>
     <select id="selectMaxId" resultType="Long">
        select max(car_id) from t_car

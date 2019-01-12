@@ -28,7 +28,7 @@ public class CarController {
     @RequestMapping("/addCar.do")
     @CrossOrigin
     public ResultVo addCar(Long carUid, Long carGcount, Long carGid){
-        return service.addCar(carUid,carGcount,carUid);
+        return service.addCar(carUid,carGcount,carGid);
     }
 
     @ApiOperation(value="回收该用户所有购物车信息，在完成订单提交时使用，传入用户id")
@@ -45,11 +45,11 @@ public class CarController {
         return service.updateOneCar(carId);
     }
 
-    @ApiOperation(value="修改商品数量")
+    @ApiOperation(value="修改商品数量传入商品数量,商品下标")
     @RequestMapping("/updateCarcount.do")
     @CrossOrigin
-    public ResultVo updateCarcount(Long carGcount, Long carId){
-        return service.updateCarcount(carGcount,carId);
+    public ResultVo updateCarcount(Long carGcount, Long carGid){
+        return service.updateCarcount(carGcount,carGid);
     }
 
     @ApiOperation(value="获取最大自增购物车id")

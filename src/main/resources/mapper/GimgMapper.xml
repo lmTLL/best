@@ -85,4 +85,7 @@
       img_flag = #{imgFlag,jdbcType=INTEGER}
     where img_id = #{imgId,jdbcType=BIGINT}
   </update>
+  <select id="getAllGimg" parameterType="Long" resultMap="BaseResultMap">
+    select * from t_gimg where img_gid = #{imgGid,jdbcType=BIGINT}
+  </select>
 </mapper>
