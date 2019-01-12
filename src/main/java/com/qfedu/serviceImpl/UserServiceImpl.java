@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public int addUser(User user) {
 
-       // return userDao.adduser(user);
+
         user.setUserPassword(EncryptUtil.md5Enc(user.getUserPassword()));
 
         return userDao.insertSelective(user);
