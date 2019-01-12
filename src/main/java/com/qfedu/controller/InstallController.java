@@ -10,10 +10,10 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
 
 
@@ -26,6 +26,7 @@ public class InstallController {
 
         @ApiOperation(value="安装服务")
         @RequestMapping("/addInstall.do")
+        @ResponseBody
         @CrossOrigin
         public ResultVo addInstall(@ApiParam("安装产品id")Integer gid, @ApiParam("物流状态id")Integer dsid, @ApiParam("期望服务时间")String stime, @ApiParam("服务地址") Integer aid, @ApiParam("产品型号或机身条码")String type, @ApiParam("备注信息")String info)  {
             Install install=new Install();

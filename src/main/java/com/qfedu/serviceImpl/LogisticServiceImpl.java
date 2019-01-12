@@ -11,8 +11,9 @@ import java.util.List;
 public class LogisticServiceImpl implements LogisticService {
     @Autowired
     private LogisticsMapper  lgDao;
+
     @Override
-    public List<Logistics> findAllStatus() {
+    public List<Logistics> findStatus() {
         return lgDao.findAllStatus();
     }
 }
