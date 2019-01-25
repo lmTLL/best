@@ -23,9 +23,9 @@
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		  init-method="init" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://10.8.155.42:3306/airdb" />
+		<property name="url" value="jdbc:mysql://39.106.164.49:3306/db_secondhand" />
 		<property name="username" value="root" />
-		<property name="password" value="bb921938" />
+		<property name="password" value="root" />
 		<!-- 配置初始化大小、最小、最大 -->
 		<property name="initialSize" value="5" />
 		<property name="minIdle" value="5" />

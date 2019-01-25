@@ -3,7 +3,6 @@ package com.qfedu.controller;
 import com.google.common.base.Objects;
 import com.qfedu.pojo.User;
 import com.qfedu.service.UserService;
-import com.qfedu.util.Base64Util;
 import com.qfedu.util.Message;
 import com.qfedu.vo.ResultVo;
 import io.swagger.annotations.Api;
@@ -13,16 +12,11 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.apache.shiro.subject.Subject;
 
-import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
-import java.util.Base64;
 import java.util.Collection;
-import java.util.Enumeration;
-import java.util.List;
 
 @Api(produces="登陆注册接口",value="接口文档")
 @RestController
@@ -37,8 +31,8 @@ public class UserController {
     @CrossOrigin
     public ResultVo addUser(@ApiParam("用户名，String类型") String name,@ApiParam("密码，String类型") String password) throws UnsupportedEncodingException {
        User user = new User();
-       user.setUserName(name);
-       user.setUserPassword(password);
+       user.setName(name);
+       user.setPassword(password);
         return ResultVo.setOK(userService.addUser(user));
 
     }
@@ -47,7 +41,7 @@ public class UserController {
     @RequestMapping("/userlogin.do")
     @CrossOrigin
     public ResultVo login(@ApiParam("用户名，String类型")String name,@ApiParam("密码，String类型")String password) {
-        User user = userService.findUser(name,password);
+        User user = userService.userlogin(name,password);
         System.out.println(user);
         if(user != null) {
             //Shiro完成登录认证
@@ -56,10 +50,10 @@ public class UserController {
             //2、设置登录的Token
             UsernamePasswordToken token=new UsernamePasswordToken(name, password);
             //3、存储数据到Session
-            subject.getSession().setAttribute(user.getUserName() , user);
+            subject.getSession().setAttribute(user.getName() , user);
             //4、登录认证
             subject.login(token);
-            return  ResultVo.setOK(user.getUserId());
+            return  ResultVo.setOK(user.getUid());
         } else {
             return ResultVo.setERROR();
         }
@@ -75,8 +69,8 @@ public class UserController {
         if (!keys.isEmpty() && keys.size() != 0) {
             for (Object key : keys) {
                 User user2 = (User) subject.getSession().getAttribute(key);
-                user.setUserId(user2.getUserId());
-                user.setUserName(user2.getUserName());
+                user.setUid(user2.getUid());
+                user.setName(user2.getName());
                 return ResultVo.setOK(user);
             }
         }

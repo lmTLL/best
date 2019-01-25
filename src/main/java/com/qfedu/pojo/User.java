@@ -1,75 +1,53 @@
 package com.qfedu.pojo;
 
 public class User {
-    private Long userId;
+    private Integer uid;
 
-    private String userName;
+    private String name;
 
-    private String userPassword;
+    private String password;
 
-    private Byte userFlag;
+    private String signature;
 
-    private String userPhone;
+    private String like;
 
-    private String userHeadimg;
-
-    public Long getUserId() {
-        return userId;
+    public Integer getUid() {
+        return uid;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword == null ? null : userPassword.trim();
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
-    public Byte getUserFlag() {
-        return userFlag;
+    public String getSignature() {
+        return signature;
     }
 
-    public void setUserFlag(Byte userFlag) {
-        this.userFlag = userFlag;
+    public void setSignature(String signature) {
+        this.signature = signature == null ? null : signature.trim();
     }
 
-    public String getUserPhone() {
-        return userPhone;
+    public String getLike() {
+        return like;
     }
 
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone == null ? null : userPhone.trim();
-    }
-
-    public String getUserHeadimg() {
-        return userHeadimg;
-    }
-
-    public void setUserHeadimg(String userHeadimg) {
-        this.userHeadimg = userHeadimg == null ? null : userHeadimg.trim();
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", userPassword='" + userPassword + '\'' +
-                ", userFlag=" + userFlag +
-                ", userPhone='" + userPhone + '\'' +
-                ", userHeadimg='" + userHeadimg + '\'' +
-                '}';
+    public void setLike(String like) {
+        this.like = like == null ? null : like.trim();
     }
 }

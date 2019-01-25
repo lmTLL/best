@@ -20,9 +20,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableWebMvc
 public class SwaggerConfig {
     public ApiInfo createApi(){
-        return new ApiInfoBuilder().title("第六期联合项目接口文档").
-                description("为了更好的融入团队，并且模拟真实的企业开发环境").
-                contact(new Contact("Java1806","http://localhost:8080/","121212@163.com")).build();
+        return new ApiInfoBuilder().title("项目接口文档").
+                description("模拟企业开发环境").
+                contact(new Contact("Java","http://localhost:8080/","121212@163.com")).build();
     }
     @Bean  //等价于 <bean>标签
     public Docket createDoc(){
